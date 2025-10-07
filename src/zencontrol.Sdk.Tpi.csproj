@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;net8.0;net9.0;netstandard2.0;netstandard2.1</TargetFrameworks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Company>zencontrol Pty.,LTD</Company>
+        <Authors>Daniel Vincent</Authors>
+        <Description>Provides a SDK to use zencontrol's Implementation of TPI for zencontrol's controllers.
+        With respective Addons enabled.</Description>
+        <NeutralLanguage>en</NeutralLanguage>
+        <Nullable>enable</Nullable>
+
+        <!-- Change the URLs as needed -->
+        <PackageProjectUrl>https://github.com/zencontrol-international/zencontrol.Sdks.Tpi-dotnet</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/zencontrol-international/zencontrol.Sdks.Tpi-dotnet</RepositoryUrl>
+
+        <VersionMajor>1</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <VersionRev>0</VersionRev>
+        <VersionPatch>0</VersionPatch>
+
+        <PackageReleaseNotes>
+            Version 1.x: Initial release
+        </PackageReleaseNotes>
+
+        <!-- System will calculate how many days since the last build -->
+        <ProjectVersion>$(VersionMajor).$(VersionMinor).$(VersionRev).$(VersionPatch)</ProjectVersion>
+        <AssemblyVersion>$(ProjectVersion)</AssemblyVersion>
+        <FileVersion>$(ProjectVersion)</FileVersion>
+        <Version>$(ProjectVersion)</Version>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <LangVersion>latest</LangVersion>
+        <RootNamespace>zencontrol.Sdk.Tpi</RootNamespace>
+    </PropertyGroup>
+</Project>
