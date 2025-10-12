@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\zencontrol.Sdk.Tpii.csproj" />
+    <ProjectReference Include="..\src\zencontrol.Sdk.Tpi.csproj" />
   </ItemGroup>
 
 </Project>
