@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
         <Company>zencontrol Pty.,LTD</Company>
         <Authors>Daniel Vincent</Authors>
@@ -16,7 +15,7 @@
         <RepositoryUrl>https://github.com/zencontrol-international/zencontrol.Sdks.Tpi-dotnet</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
 
-        <PackageLicenseExpression>GPL-3.0</PackageLicenseExpression>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 
         <VersionMajor>1</VersionMajor>
         <VersionMinor>0</VersionMinor>
