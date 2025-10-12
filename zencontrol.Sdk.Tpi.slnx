@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ExampleTPIApplication/ExampleTPIApplication.csproj" />
+  <Project Path="src.test/src.test.csproj" />
+  <Project Path="src/zencontrol.Sdk.Tpi.csproj" />
+</Solution>
