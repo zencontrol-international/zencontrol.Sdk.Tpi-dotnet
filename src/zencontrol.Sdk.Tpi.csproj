@@ -14,6 +14,9 @@
         <!-- Change the URLs as needed -->
         <PackageProjectUrl>https://github.com/zencontrol-international/zencontrol.Sdks.Tpi-dotnet</PackageProjectUrl>
         <RepositoryUrl>https://github.com/zencontrol-international/zencontrol.Sdks.Tpi-dotnet</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+
+        <PackageLicenseExpression>GPL-3.0</PackageLicenseExpression>
 
         <VersionMajor>1</VersionMajor>
         <VersionMinor>0</VersionMinor>
@@ -30,6 +33,7 @@
         <Version>$(ProjectVersion)</Version>
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <LangVersion>latest</LangVersion>
         <RootNamespace>zencontrol.Sdk.Tpi</RootNamespace>
     </PropertyGroup>
