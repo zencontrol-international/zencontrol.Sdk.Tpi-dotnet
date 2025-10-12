@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleTPIApplication", "ExampleTPIApplication\ExampleTPIApplication.csproj", "{6020B7F4-D013-4899-B1C3-12EB9760B0FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zencontrol.Sdk.Tpii", "src\zencontrol.Sdk.Tpii.csproj", "{EBFDC288-13C1-47A6-8ED8-2FC0DA23076F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zencontrol.Sdk.Tpi", "src\zencontrol.Sdk.Tpi.csproj", "{EBFDC288-13C1-47A6-8ED8-2FC0DA23076F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "src.test", "src.test\src.test.csproj", "{48A72093-0353-4FC3-A357-AFDD1F9EB86B}"
 EndProject
