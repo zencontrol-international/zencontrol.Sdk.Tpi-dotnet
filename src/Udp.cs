@@ -1,6 +1,5 @@
 using System;
 using System.Net.Sockets;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace zencontrol.Sdk.Tpi;
@@ -17,11 +16,11 @@ public class Udp : ITransport
     // Public Properties
     
     /// <summary>
-    /// Sets the timeout before attempting to read from the UDP port, if the time is too short,
-    /// there is a chance that there are no bytes at the buffer.
-    /// If the timer is too long - then there is wasted time. It will depend on the equipment.
+    /// The receive timeout for UDP socket read operations. If the controller does not respond
+    /// within this period, a <see cref="SocketException"/> or <see cref="TimeoutException"/> will be thrown.
+    /// Default is 1000ms. Reduce for faster error detection on local networks.
     /// </summary>
-    public TimeSpan TimeoutMilliSeconds { get; set; } = new TimeSpan(0, 0, 0, 0, 1000);
+    public TimeSpan ReceiveTimeout { get; set; } = TimeSpan.FromMilliseconds(1000);
     
     /// <summary>
     /// The port number for the UDP connection to the controller.
@@ -40,8 +39,8 @@ public class Udp : ITransport
     /// <summary>
     /// Create a new Instance of the UDP transport type
     /// </summary>
-    /// <param name="ipAddress">The IP address of the device that the tansport should connect too: Example: 192.168.5.19</param>
-    /// <param name="portNumber">The Port number of the device that the transport should connect too: Example: 8802</param>
+    /// <param name="ipAddress">The IP address of the device that the transport should connect to: Example: 192.168.5.19</param>
+    /// <param name="portNumber">The Port number of the device that the transport should connect to: Example: 8802</param>
     public Udp(string ipAddress, int portNumber)
     {
         IpAddress = ipAddress;
@@ -61,7 +60,7 @@ public class Udp : ITransport
     {
         _udpClient = new UdpClient(IpAddress, PortNumber);
         _udpClient.Connect(IpAddress, PortNumber);
-        _udpClient.Client.ReceiveTimeout = (int)TimeoutMilliSeconds.TotalMilliseconds;
+        _udpClient.Client.ReceiveTimeout = (int)ReceiveTimeout.TotalMilliseconds;
     }
 
 
@@ -96,16 +95,28 @@ public class Udp : ITransport
     /// <returns>Byte array containing response from controller</returns>
     /// <exception cref="UdpException">Thrown when UDP client is not open</exception>
     /// <exception cref="SocketException">Thrown when receive operation fails</exception>
-    /// <exception cref="TimeoutException">Thrown when no data is received within timeout period</exception>
+    /// <exception cref="TimeoutException">Thrown when no data is received within the <see cref="ReceiveTimeout"/> period</exception>
     public byte[] ReadBytes()
     {
         if (_udpClient is null)
         {
             throw new UdpException($"UdpClient is null, Call {nameof(Open)} before using this method");
         }
-        Thread.Sleep(TimeoutMilliSeconds);
-        Task<UdpReceiveResult>? rx = _udpClient.ReceiveAsync();
-        return rx.Result.Buffer;
+
+        try
+        {
+            Task<UdpReceiveResult> rx = _udpClient.ReceiveAsync();
+            rx.Wait(ReceiveTimeout);
+            if (!rx.IsCompleted)
+            {
+                throw new TimeoutException($"UDP receive timed out after {ReceiveTimeout.TotalMilliseconds}ms");
+            }
+            return rx.Result.Buffer;
+        }
+        catch (AggregateException ex) when (ex.InnerException is SocketException)
+        {
+            throw ex.InnerException;
+        }
     }
 
     /// <inheritdoc />
