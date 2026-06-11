@@ -17,13 +17,14 @@
 
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 
-        <VersionMajor>1</VersionMajor>
+        <VersionMajor>2</VersionMajor>
         <VersionMinor>0</VersionMinor>
         <VersionRev>0</VersionRev>
         <VersionPatch>0</VersionPatch>
 
         <PackageReleaseNotes>
             Version 1.x: Initial release
+            Version 2.x: Updates to the SDK and made minor breaking changes that include spelling mistakes and functionality.
         </PackageReleaseNotes>
 
         <ProjectVersion>$(VersionMajor).$(VersionMinor).$(VersionRev).$(VersionPatch)</ProjectVersion>
