@@ -35,13 +35,12 @@ public class TpiAddress
     /// <exception cref="TpiException">Thrown when group number is out of range</exception>
     public static TpiAddress GetGroup(byte groupNumber)
     {
-        byte group = (byte)(0x40 + groupNumber);
-        if (groupNumber is < 0x40 or > 0x4F)
+        if (groupNumber > 15)
         {
             throw new TpiException("Group Number is invalid and requires to be between the numbers 0-15");
         }
 
-        return new TpiAddress(group);
+        return new TpiAddress((byte)(0x40 + groupNumber));
     }
 
     /// <summary>

@@ -23,7 +23,7 @@ public class Mode3Command : BaseModeCommand
     /// </summary>
     /// <param name="address">TPI address of the target device to query</param>
     /// <param name="command">Quick query command to execute</param>
-    public Mode3Command(TpiAddress address, Command command) : base((ControlByteType)0x03, (byte)((byte)address.AddressNumber << 1), (byte) command)
+    public Mode3Command(TpiAddress address, Command command) : base(ControlByteType.QuickQuery, (byte)((byte)address.AddressNumber << 1), (byte)command)
     {
     }
 }

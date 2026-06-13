@@ -32,7 +32,7 @@ public class Mode2Command : BaseModeCommand
     /// </summary>
     /// <param name="instanceAddress">Virtual instance address to target</param>
     /// <param name="command">Virtual command to execute</param>
-    public Mode2Command(byte instanceAddress, Command command) : base((ControlByteType)0x02, instanceAddress, (byte) command)
+    public Mode2Command(byte instanceAddress, Command command) : base(ControlByteType.VirtualButton, instanceAddress, (byte)command)
     {
     }
 }
